@@ -4,11 +4,18 @@ word_list = ["aardvark", "baboon", "camel"]
 random_word = random.choice(word_list)
 print(random_word)
 
-guess = input("Enter a letter: ").lower()
-print(guess)
+dashes = ""
+for _ in random_word:
+    dashes += "_"
+print(dashes)
 
-for letter in random_word:
-    if letter == guess:
-        print("Right")
+guess = input("Guess a letter: ").lower()
+
+display = ""
+for char in random_word:
+    if char == guess:
+        display += guess
     else:
-        print("Wrong")
+        display += "_"
+    
+print(display)
