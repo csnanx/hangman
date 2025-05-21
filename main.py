@@ -57,6 +57,7 @@ stages = [r'''
 ''']
 
 word_list = ["aardvark", "baboon", "camel"]
+lives = 6
 random_word = random.choice(word_list)
 print(random_word)
 
@@ -71,6 +72,8 @@ game_over = False
 while not game_over:
     guess = input("Guess a letter: ").lower()
     display = ""
+    if guess not in random_word:
+        lives -= 1
 
     for char in random_word:
         if char == guess:
