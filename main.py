@@ -9,13 +9,24 @@ for _ in random_word:
     dashes += "_"
 print(dashes)
 
-guess = input("Guess a letter: ").lower()
+guessed_letters = []
+game_over = False
 
-display = ""
-for char in random_word:
-    if char == guess:
-        display += guess
-    else:
-        display += "_"
-    
-print(display)
+while not game_over:
+    guess = input("Guess a letter: ").lower()
+    display = ""
+
+    for char in random_word:
+        if char == guess:
+            display += guess
+            guessed_letters.append(guess)
+        elif char in guessed_letters:
+            display += char
+        else:
+            display += "_"
+
+    print(display)
+
+    if "_" not in display:
+        game_over = True
+        print("You win.")
